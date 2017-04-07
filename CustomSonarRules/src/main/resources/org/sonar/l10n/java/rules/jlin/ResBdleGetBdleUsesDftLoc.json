@@ -1,0 +1,13 @@
+{
+  "title": "Use ResourceBundle.getBundle versions with Locale parameter",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "bug",
+    "pitfall"
+  ],
+  "defaultSeverity": "Major"
+}

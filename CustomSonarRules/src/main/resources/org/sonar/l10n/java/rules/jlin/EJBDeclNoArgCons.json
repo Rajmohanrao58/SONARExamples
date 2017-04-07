@@ -1,0 +1,13 @@
+{
+  "title": "EJB classes must declare a no Argument constructor",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "bug",
+    "pitfall"
+  ],
+  "defaultSeverity": "Major"
+}

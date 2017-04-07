@@ -1,0 +1,242 @@
+{
+	"RuleMetadata": [
+		{
+			"ruleKey": "AsstStatShdNotBeUsed",
+			"title": "assert statements should not be used",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "BundleStartErrMsg",
+			"title": "assert statements should not be used",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "DefSubThrNotExp",
+			"title": "Don't define a subclass of java.lang.Throwable which is not a subclass of java.lang.Exception",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "EJBClassMustBePublic",
+			"title": "EJB classes must be public",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "EJBClassMustNotBeFinal",
+			"title": "EJB classes must not be declared Final",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "EJBClassNoFinalize",
+			"title": "EJB classes must not declare Finalize() method",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "EJBDeclNoArgCons",
+			"title": "EJB classes must declare a no Argument constructor",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "HashMethodReturnsConstant",
+			"title": "hashCode() Mehtod returns constant",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "MaxNoOfSwitchCases",
+			"title": "maximum number of cases exceeded",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "NonEclipseApiUsed",
+			"title": "Non Eclipse API class used",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "ReadAndWriteObjectsMustbeImpl",
+			"title": "read and Write object methods should be implemented",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "ResBdleGetBdleUsesDftLoc",
+			"title": "Use ResourceBundle.getBundle versions with Locale parameter",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "ThrCgtIsNotSubExp",
+			"title": "Throwable Caught is not a subclass of java.lang.Exception",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "ThrThrIsNotSubExp",
+			"title": "Throwable thrown is not a subclass of java.lang.Exception",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "UsgOfForbnClassInEJB",
+			"title": "usage of forbidden class inside an EJB",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "UsgOfForbnMethInEJB",
+			"title": "usage of forbidden Method inside an EJB",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		},
+		{
+			"ruleKey": "UsgOfForbnPackInEJB",
+			"title": "usage of forbidden package inside an EJB",
+			"status": "ready",
+			"remediation": {
+				"func": "Constant\/Issue",
+				"constantCost": "5min"
+			},
+			"tags": [
+				"bug",
+				"pitfall"
+			],
+			"defaultSeverity": "Major"
+		}
+	]
+}

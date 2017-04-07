@@ -1,0 +1,13 @@
+{
+  "title": "Don't define a subclass of java.lang.Throwable which is not a subclass of java.lang.Exception",
+  "status": "ready",
+  "remediation": {
+    "func": "Constant\/Issue",
+    "constantCost": "5min"
+  },
+  "tags": [
+    "bug",
+    "pitfall"
+  ],
+  "defaultSeverity": "Major"
+}
