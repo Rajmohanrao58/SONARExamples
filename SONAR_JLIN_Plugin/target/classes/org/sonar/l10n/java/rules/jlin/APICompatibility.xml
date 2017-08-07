@@ -1,0 +1,790 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<TEST_SET NAME="750" FATAL_PRIO_LEVEL="2" VERSION="$DateTime: 2010/02/09 15:35:49 $">
+
+<!--   This file contains the test configuration for the tests to be run on the 7.1 EhP4, aka 7.50 branches.   --> 
+<!--   Revision: $Id: //info/jlin/variants/750/testconfig.xml#13 $  --> 
+<!--   Date:     $Date: 2010/02/09 $  --> 
+<!--    When changing this file, always remember to update the hashcodes in test "CheckConfiguration"!			 -->
+
+<!--  T E S T S  -->
+  <TEST ACTIVE="true" NAME="CheckCodeClassification">
+      <MESSAGES>
+            <MESSAGE KEY="checkCodeClassification" PRIO="3" SEVERITY="3" />
+       </MESSAGES>
+  </TEST>
+
+  <TEST ACTIVE="true" NAME="TBAntTask">
+    <INPUT_PARAMETER NAME="DOCUMENTATION_LINK_DEVELOPER" TYPE="STRING">
+         <VALUE>https://wiki.wdf.sap.corp/wiki/display/ProductionToolsUserDoc/Japro+Translation+Development+Guide</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="DOCUMENTATION_LINK_OPERATOR" TYPE="STRING">
+         <VALUE>https://wiki.wdf.sap.corp/wiki/display/ProductionToolsUserDoc/Japro+Translation+Development+Guide</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="DOCUMENTATION_LINK_TOOL_BUG" TYPE="STRING">
+         <VALUE>https://wiki.wdf.sap.corp/wiki/display/ProductionToolsUserDoc/Japro+Translation+Development+Guide</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="OUTPUT_DIR" TYPE="STRING">
+         <VALUE>dbg/java/jlin/</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+          		<MESSAGE KEY="TB.InvalidMail" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.MissingFile" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoDomainOrCollection" 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.InvalidFileExtension" 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.InvalidURI" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.DuplicateObject" 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoUid" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoMetadata" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.BrokenFile" 		PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.ConfigurationInvalid" 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoConnection" 	 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoWrite" 	 	PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.NoAccess"              PRIO="3" SEVERITY="2"/>
+          		<MESSAGE KEY="TB.Undefined"             PRIO="3" SEVERITY="2"/>
+    </MESSAGES>
+  </TEST>
+
+  <TEST ACTIVE="true" NAME="CheckConfiguration">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="VALID_HASHCODE" TYPE="STRING[]">
+	<VALUE><!-- HashCode as it is calculated -->
+		<ITEM>-1827878803</ITEM><!-- Strict -->
+		<ITEM>-396719510</ITEM><!-- Standard -->	
+		<ITEM>-2014082176</ITEM><!-- 730 -->	
+		<ITEM>409872891</ITEM><!-- 731 -->	
+		<ITEM>258732313</ITEM><!-- 740-->	
+		<ITEM>539477190</ITEM><!-- 750-->
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="VALID_CONFIG_NAME" TYPE="STRING[]">
+	<VALUE>
+		<ITEM>Strict</ITEM>
+		<ITEM>Standard</ITEM>
+		<ITEM>730</ITEM>
+		<ITEM>731</ITEM>
+		<ITEM>740</ITEM>
+		<ITEM>750</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="DOCUMENTATION_LINK" TYPE="STRING">
+         <VALUE>https://wiki.wdf.sap.corp/wiki/display/JLin/Test+CheckConfiguration</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+         <MESSAGE KEY="apidiff.19"        PRIO="4" DISPLAYNAME="Dummy message to trick JLin" DROP="false"/>
+         <MESSAGE KEY="apidiff.36.Log"    PRIO="4" DISPLAYNAME="{GENERAL_MESSAGE}" DROP="true"/>
+         <MESSAGE KEY="apidiff.36.Severe" PRIO="0" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="checkConfig.1"     PRIO="3" DROP="false" DISPLAYNAME="Non-Standard test configuration file used to run JLin. If you are executing a local configuration in NWDS, please disable this test. If this message results from nightly build: Please check the used test configuration. It must be one from \\\\production\\depot\\info\\jlin\\variants."/>
+         <MESSAGE KEY="checkConfig.2"     PRIO="4" DROP="false" DISPLAYNAME="Info: project {ProjectName} uses testconfig {ConfigName} with HashCode {HashCode}"/>
+         <MESSAGE KEY="checkConfig.3"     PRIO="4" DROP="false" DISPLAYNAME="project {ProjectName} uses testconfig {ConfigName} with invalid HashCode {HashCode}"/>
+         <MESSAGE KEY="checkConfig.Log"   PRIO="4"/>
+    </MESSAGES>
+  </TEST>
+  
+<TEST ACTIVE="true" NAME="Bundle Start Test">
+      <MESSAGES>
+            <MESSAGE DISPLAYNAME="TbundleStart.errorMessage" KEY="623" PRIO="4" SEVERITY="3" />
+      </MESSAGES>
+</TEST>
+
+  <TEST ACTIVE="false" NAME="API_Compatibility_Client">
+    <APPLIES_TO>all</APPLIES_TO>
+    	<INPUT_PARAMETER NAME="DELTA_SOURCE" TYPE="FILE">
+		<!-- delta xml file where the API changes are saved -->
+		<VALUE>\\production\depot\info\jlin\variants\731\deltaJDK6JDK7.xml</VALUE>		          
+        </INPUT_PARAMETER>         
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+  </TEST>
+ 
+  <TEST ACTIVE="true" NAME="API_Compatibility">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="CLASSLIST" TYPE="FILE[]">
+	<VALUE><!-- TODO: not exactly right, 7.50 should check against 7.31 SP?? that will be delivered in autumn 2015 -->
+            <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverCE\com.sap.NetWeaverCE_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverEP\com.sap.ep_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverKMC\com.sap.kmc_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverPI\com.sap.pi_classes.csv</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="BASELINE" TYPE="FILE[]">
+	<VALUE><!-- the file must be named "api.jar" and must be generated by the eclipse toolset, containing an XML file with meta info. -->
+	    <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverCE\api.jar</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverEP\api.jar</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverKMC\api.jar</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.baselines\NW750CORE_SP_COR\gen\dbg\java\packaged\public\_750_SP_initial\NetWeaverPI\api.jar</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="COMPLETE_API" TYPE="FILE[]">
+	<VALUE><!-- complete set of APIs from the current release -->
+	     <ITEM>\\production2\naas\java\750\NW.javadoc\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_pack_api\api.jar</ITEM>
+	     <ITEM>\\production2\naas\java\750\NW.javadoc\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_pack_api_CE\api.jar</ITEM>
+	     <ITEM>\\production2\naas\java\750\NW.javadoc\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_pack_api_EP\api.jar</ITEM>
+	     <ITEM>\\production2\naas\java\750\NW.javadoc\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_pack_api_KMC\api.jar</ITEM>
+	     <ITEM>\\production2\naas\java\750\NW.javadoc\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_pack_api_PI\api.jar</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="USAGE_NO_CALL" TYPE="STRING[]">
+        <VALUE>
+              <ITEM>@SAPWebDynproPart 4</ITEM>
+              <ITEM>@sap.NoApi</ITEM>
+              <ITEM>@noreference</ITEM>
+              <ITEM>@sap.ApiForInheritance</ITEM>
+              <ITEM>@sap.ApiForInheritanceCallingSuper</ITEM>
+              <ITEM>@noimplement</ITEM>
+              <ITEM>@noextend</ITEM>
+              <ITEM>@nooverride</ITEM>
+        </VALUE>
+    </INPUT_PARAMETER> 
+    <INPUT_PARAMETER NAME="USAGE_NO_INHERIT" TYPE="STRING[]">
+        <VALUE>
+               <ITEM>@SAPWebDynproPart 2</ITEM>
+               <ITEM>@SAPWebDynproPart 4</ITEM>
+               <ITEM>@sap.NoApi</ITEM>
+               <ITEM>@noimplement</ITEM>
+               <ITEM>@noextend</ITEM>
+               <ITEM>@nooverride</ITEM>
+               <ITEM>@sap.ApiForReference</ITEM>
+               <ITEM>@noreference</ITEM>
+        </VALUE>
+    </INPUT_PARAMETER> 
+    <INPUT_PARAMETER NAME="TOOLS_DIR" TYPE="DIRECTORY">
+	<VALUE></VALUE>
+    </INPUT_PARAMETER>    
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="COMPATIBILITY_RULES" TYPE="STRING">
+         <VALUE>RELEASE_COMPATIBILITY</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="KNOWN_INCOMPATIBILITIES" TYPE="FILE"> 
+          <VALUE>\\production\depot\info\jlin\variants\711\knownIncompatibilities730.properties</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="DOCUMENTATION_LINK" TYPE="STRING">
+        <VALUE>https://wiki.wdf.sap.corp/wiki/display/JavaIncomp</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+      <MESSAGE KEY="apidiff.36.Severe" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.High" PRIO="2"/>
+      <MESSAGE KEY="apidiff.36" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.Low" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.Log" PRIO="4"/>
+    </MESSAGES>
+  </TEST>
+ 
+  <TEST ACTIVE="true" NAME="API_Classification">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="CLASSLIST" TYPE="FILE[]">
+	<VALUE>
+            <ITEM>\\production2\naas\java\720\nw.api.baselines\NW720_SP_COR\gen\dbg\java\packaged\public\_730_SP01\NetWeaverCE\com.sap.NetWeaverCE_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\720\nw.api.baselines\NW720_SP_COR\gen\dbg\java\packaged\public\_730_SP01\NetWeaverEP\com.sap.ep_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\720\nw.api.baselines\NW720_SP_COR\gen\dbg\java\packaged\public\_730_SP01\NetWeaverKMC\com.sap.kmc_classes.csv</ITEM>
+            <ITEM>\\production2\naas\java\720\nw.api.baselines\NW720_SP_COR\gen\dbg\java\packaged\public\_730_SP01\NetWeaverPI\com.sap.pi_classes.csv</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="CLASSLIST_NO_JLIN" TYPE="FILE[]">
+	<VALUE>
+            <ITEM>\\production\depot\info\jlin\variants\711\dropListAPIClassification730.csv</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="ONE_MESSAGE_PER_PROJECT" TYPE="BOOLEAN">
+        <VALUE>TRUE</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="IGNORE_HEADER_COMMENTS" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+      <MESSAGE KEY="apidiff.36.Low" PRIO="4"/>
+      <MESSAGE KEY="apidiff.36" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.High" PRIO="2"/>
+      <MESSAGE KEY="apidiff.36.Severe" PRIO="3"/>
+      <MESSAGE KEY="apiclassif" PRIO="2"/>
+      <MESSAGE KEY="apiclassif2" PRIO="2"/>
+      <MESSAGE KEY="apiclassif3" PRIO="2"/>
+    </MESSAGES>
+  </TEST>
+
+   <TEST ACTIVE="true" NAME="JLin_Classification">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="CLASSLIST" TYPE="FILE[]">
+	<VALUE>
+            <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_analyse_duplicated_classes\publicClassList.csv</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="CLASSLIST_NO_JLIN" TYPE="FILE[]">
+	<VALUE>
+            <ITEM>\\production\depot\info\jlin\variants\750\dropListJLinClassification750.csv</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="ONE_MESSAGE_PER_PROJECT" TYPE="BOOLEAN">
+        <VALUE>TRUE</VALUE>
+    </INPUT_PARAMETER>
+    <INPUT_PARAMETER NAME="IGNORE_HEADER_COMMENTS" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+      <MESSAGE KEY="apidiff.36.Low" PRIO="4"/>
+      <MESSAGE KEY="apidiff.36" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.Severe" PRIO="3"/>
+      <MESSAGE KEY="apidiff.36.High" PRIO="3"/>
+      <MESSAGE KEY="apiclassif" PRIO="2" DISPLAYNAME="JLin messages for class {CLASSNAME} are suppressed by code classification test/suppressed, but it is part of delivery {APINAME} "/>
+      <MESSAGE KEY="apiclassif2" PRIO="2"  DISPLAYNAME="JLin messages for class {CLASSNAME} are suppressed by code classification test/suppressed, but it is part of delivery {APINAME}. This message will be upgraded to prio1 in some weeks."/>
+      <MESSAGE KEY="apiclassif3" PRIO="2"  DISPLAYNAME="JLin messages for class {CLASSNAME} are suppressed by code classification test/suppressed, but it is part of delivery {APINAME}. This message will be upgraded to prio2 in some weeks."/>
+    </MESSAGES>
+  </TEST>
+ 
+  <TEST ACTIVE="true" NAME="JavaDoc">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="CENTRAL_MESSAGEFILENAME" TYPE="FILE[]">
+        <VALUE>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\api\CE\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\api\EP\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\api\KMC\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\api\PI\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <!--ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\api\preparation\jlin\projects\allMessages\jlin_results.xml</ITEM-->
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+         <MESSAGE KEY="apidiff.19" PRIO="4" DISPLAYNAME="Dummy message to trick JLin"/>
+         <MESSAGE KEY="apidiff.36" PRIO="2" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.Low" PRIO="4" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+		 <MESSAGE KEY="apidiff.36.Invisible" PRIO="4" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.High" PRIO="2" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.Severe" PRIO="0" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.Log" PRIO="4" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.50" PRIO="4"/>
+    </MESSAGES>
+  </TEST>
+ 
+  <TEST ACTIVE="true" NAME="API_Packaging">
+    <APPLIES_TO>all</APPLIES_TO>
+    <INPUT_PARAMETER NAME="CENTRAL_MESSAGEFILENAME" TYPE="FILE[]">
+        <VALUE>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\pack\CE\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\pack\EP\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\pack\KMC\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	    <ITEM>\\production2\naas\java\750\nw.api.reporting\NW750EXT_SP_COR\gen\dbg\java\packaged\public\_generate_html\pack\PI\jlin\projects\allMessages\jlin_results.xml</ITEM>
+	</VALUE>
+    </INPUT_PARAMETER>     
+    <INPUT_PARAMETER NAME="VERBOSE" TYPE="BOOLEAN">
+        <VALUE>FALSE</VALUE>
+    </INPUT_PARAMETER>
+    <MESSAGES>
+         <MESSAGE KEY="apidiff.19" PRIO="4" DISPLAYNAME="Dummy message to trick JLin"/>
+         <MESSAGE KEY="apidiff.36.Low" PRIO="3" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36" PRIO="3" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.High" PRIO="2" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.Severe" PRIO="0" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.36.Log" PRIO="4" DISPLAYNAME="{GENERAL_MESSAGE}"/>
+         <MESSAGE KEY="apidiff.50" PRIO="4" DISPLAYNAME="Class {CLASSNAME} uses a static variable {NAME} with {SIZE} elements."/>
+    </MESSAGES>
+  </TEST>
+  
+<TEST ACTIVE="true" NAME="Solution Management Product Standard">
+  <INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+    <VALUE><ITEM>//production/depot/info/jlin/variants/710/restrictionlist_SolMan.xml</ITEM></VALUE>
+  </INPUT_PARAMETER>
+  <!--INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER -->
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Unable to load property file {EXCEPTION}" KEY="scanner.1" PRIO="0"/>
+    <MESSAGE DISPLAYNAME="SolMan Forbidden component. See {__LINK}" KEY="scanner.2" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="false" NAME="DB/OS Portability">
+      <MESSAGES>
+      	<MESSAGE DISPLAYNAME="native method declared requires separate native implementations for all supported Java platforms" KEY="portability.1" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="hard-coded platform-specific line separator(s) used in String literal. Use System.getProperty .... with java.util.Formatter instead" KEY="portability.2" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="hard-coded windows-specific file path used" KEY="portability.3" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="OS-dependent system property used" KEY="portability.4" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="loading native libraries is OS-dependent and should normally be avoided" KEY="portability.5" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="OS-dependent environment variables accessed using java.lang.System.getenv()" KEY="portability.6" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="OS-dependent environment variable accessed using java.lang.System.getenv()" KEY="portability.7" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="DB vendor-specific native SQL bypasses OpenSQL DB abstraction layer" KEY="portability.8" PRIO="4" SEVERITY="2" /> 
+	<MESSAGE DISPLAYNAME="java.sql.DriverManager used. Use a JNDI lookup on a javax.sql.DataSource to get a java.sql.Connection instead." KEY="portability.9" PRIO="4" SEVERITY="2" /> 
+      </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Compiler">
+        <MESSAGES>
+            <MESSAGE KEY="2" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="3" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="15" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="16" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="17" PRIO="4" SEVERITY="3" DROP="true"/><!-- internal tool error? -->
+            <MESSAGE KEY="50" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="70" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="71" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="74" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="100" PRIO="4" SEVERITY="3" DROP="true"/><!-- happens if jdk1.5 compiles java6 code -->
+            <MESSAGE KEY="104" DISPLAYNAME="Cannot directly invoke the abstract method {0} for the type {1}" PRIO="4" SEVERITY="3" DROP="true"/><!-- this is a known bug in eclipse -->
+            <MESSAGE KEY="108" DISPLAYNAME="ShouldReturnValue" PRIO="4" SEVERITY="3" />			
+            <MESSAGE KEY="115" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="130" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="156" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="167" DISPLAYNAME="Unreachable catch block for {0}. This exception is never thrown from the try statement body" PRIO="4" SEVERITY="3" />
+            <MESSAGE KEY="201" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="204" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="232" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="240" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="253" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="324" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="327" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+            <MESSAGE KEY="390" DISPLAYNAME="ImportNotFound" PRIO="4" SEVERITY="3" />
+            <MESSAGE KEY="400" DISPLAYNAME="The type {0} must implement the inherited abstract method {1}" PRIO="4" SEVERITY="3" />
+            <MESSAGE KEY="402" DISPLAYNAME="Exception {0} is not compatible with throws clause in {1}" PRIO="4" SEVERITY="3" />
+            <MESSAGE KEY="524" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+			<MESSAGE KEY="527" DISPLAYNAME="Erasure of method map({0} is the same as another method in type {1}" PRIO="4" SEVERITY="3" />	
+			<MESSAGE KEY="560" DISPLAYNAME="Name clash: The method setPolicySets(0) has the same erasure as setPolicySets{1}" PRIO="4" SEVERITY="3" />				
+            <MESSAGE KEY="623" DISPLAYNAME="The method {0}({1}) of type {2} must override a superclass method" PRIO="4" SEVERITY="3" DROP="true"/>
+            <MESSAGE KEY="634" PRIO="4" SEVERITY="4" DROP="true"/><!-- java8 / SAP-SDK error? -->
+        </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="JDK 1.4 -1.5 Incompatibilities">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="PROXY_CLASS.1" KEY="PROXY_CLASS.1" PRIO="1"/>
+    <MESSAGE DISPLAYNAME="VM_INFO_FORMAT.1" KEY="VM_INFO_FORMAT.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="LEVEL_CONSTRUCTOR.1" KEY="LEVEL_CONSTRUCTOR.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="NULL_POINTER_DRAWIMAGE.1" KEY="NULL_POINTER_DRAWIMAGE.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="JBUTTON_OCEAN_LNF.1" KEY="JBUTTON_OCEAN_LNF.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="TIMESTAMP_COMPARE_TO.1" KEY="TIMESTAMP_COMPARE_TO.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="ENUM_KEYWORD.1" KEY="ENUM_KEYWORD.1" PRIO="4"/>
+    <MESSAGE DISPLAYNAME="Ambiguous Queue import" KEY="jdkc5.8" PRIO="1"/>
+    <MESSAGE DISPLAYNAME="BigDecimal.toString() implementation changed" KEY="jdkc5.9" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="The org.apache.* packages are no longer included in JDK 1.5" KEY="jdkc5.10" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Java6">
+	<INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+		<VALUE>
+			<ITEM>//production/depot/info/jlin/variants/720/restrictionlist_Java6.xml</ITEM> 
+		</VALUE>
+	</INPUT_PARAMETER>
+	<INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+		<VALUE>true</VALUE> 
+	</INPUT_PARAMETER>
+	<MESSAGES>
+		<MESSAGE DISPLAYNAME="Java6 Forbidden component. See {__LINK}" KEY="scanner.1" PRIO="-1" /> 
+  		<MESSAGE DISPLAYNAME="Java6 Forbidden component. See {__LINK}" KEY="scanner.2" PRIO="-1" /> 
+  	</MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Performance Product Standard">
+  <INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+    <VALUE><ITEM>//production/depot/info/jlin/variants/710/restrictionlist_performance.xml</ITEM></VALUE>
+  </INPUT_PARAMETER>
+  <!--INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER -->
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Unable to load property file {EXCEPTION}" KEY="scanner.1" PRIO="0"/>
+    <MESSAGE DISPLAYNAME="Performance Forbidden component. See {__LINK}" KEY="scanner.2" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Security Product Standard">
+  <INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+    <VALUE><ITEM>//production/depot/info/jlin/variants/730/restrictionlist_security.xml</ITEM></VALUE>
+  </INPUT_PARAMETER>
+  <!--INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER -->
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Unable to load property file {EXCEPTION}" KEY="scanner.1" PRIO="0"/>
+    <MESSAGE DISPLAYNAME="Security Forbidden component. See {__LINK}" KEY="scanner.2" PRIO="-1"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Globalization Product Standard">
+  <INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+    <VALUE><ITEM>//production/depot/info/jlin/variants/730/restrictionlist_Globalization.xml</ITEM></VALUE>
+  </INPUT_PARAMETER>
+  <!--INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER -->
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Unable to load property file {EXCEPTION}" KEY="scanner.1" PRIO="0"/>
+    <MESSAGE DISPLAYNAME="Globalization Forbidden component. See {__LINK}" KEY="scanner.2" PRIO="DYNAMIC"/>
+  </MESSAGES>
+  <APPLIES_TO>all</APPLIES_TO>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Development Environments Product Standard">
+    <INPUT_PARAMETER NAME="CONFIG_FILE" TYPE="FILE[]">
+      <VALUE>
+        <ITEM>//production/depot/info/jlin/variants/730/restrictionlist_dev_env.xml</ITEM>
+      </VALUE>
+    </INPUT_PARAMETER>
+    <!--INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+      <VALUE>true</VALUE>
+    </INPUT_PARAMETER-->
+    <MESSAGES>
+      <MESSAGE DISPLAYNAME="Unable to load property file {EXCEPTION}" KEY="scanner.1" PRIO="3" SEVERITY="2"/>
+      <MESSAGE DISPLAYNAME="{MESSAGE}" KEY="scanner.2" PRIO="DYNAMIC" SEVERITY="2"/>
+    </MESSAGES>
+    <APPLIES_TO>all</APPLIES_TO>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Assertion Test">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="assert statements should not be used" KEY="assert.1" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Restricted Components">
+  <INPUT_PARAMETER NAME="GRAMMAR_FILE" TYPE="FILE">
+    <VALUE>//production/depot/info/jlin/variants/750/restrictionlist.xml</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="ONE_MSG_PER_CU" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Forbidden component. See {__LINK}" KEY="rc.1" PRIO="DYNAMIC"/>
+    <MESSAGE DISPLAYNAME="Forbidden component. See {__LINK}" KEY="rc.2" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="New Catch Block Test">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="thrown exception doesn't nest the causing one" KEY="newcatchblock.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="no exception handling pattern found (see test tescription)" KEY="newcatchblock.2" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="empty catch block" KEY="newcatchblock.3" PRIO="2"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="EJB serializable parameters">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="non-serializable remote EJB return type" KEY="ejbremote.2" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="non-serializable remote EJB method parameter type or return type" KEY="ejbremote.1" PRIO="2"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="EJB programming restrictions">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="EJB classes must be declared public" KEY="ejbimpl.1" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="EJB classes must not be declared final" KEY="ejbimpl.2" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="static EJB fields should be final" KEY="ejbimpl.3" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="usage of forbidden package inside an EJB" KEY="ejbimpl.4" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="usage of forbidden class inside an EJB" KEY="ejbimpl.5" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="usage of forbidden method inside an EJB" KEY="ejbimpl.6" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="usage of forbidden field inside an EJB" KEY="ejbimpl.7" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="EJB classes must not declare a finalize method" KEY="ejbimpl.8" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="EJB classes must declare a public no-args constructor" KEY="ejbimpl.9" PRIO="2"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Serialization">
+  <INPUT_PARAMETER NAME="IGNORE_GUI_CLASSES" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="CHECK_SERIALVERSION_UID" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="both readObject() and writeObject() methods should be implemented" KEY="serialization.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="both serialPersistentFields and readObject() or writeObject() methods are declared" KEY="serialization.2" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="superclass is not serializable and doesn't have a no-args constructor" KEY="serialization.3" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="static final long serialVersionUID is not declared" KEY="serialization.4" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="field must either implement java.io.Serializable or be declared transient" KEY="serialization.5" PRIO="2"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="ExceptionTest">
+  <INPUT_PARAMETER NAME="CHECK_TOO_GENERIC_EXC" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="CHECK_DECLARED_EXC" TYPE="BOOLEAN">
+    <VALUE>false</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="declared Exception is too generic" KEY="exc.2" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Throwable caught is not a subclass of java.lang.Exception" KEY="exc.3" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Throwable thrown is not a subclass of java.lang.Exception" KEY="exc.4" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Don't define a subclass of java.lang.Throwable which is not a subclass of java.lang.Exception" KEY="exc.5" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="declared Throwable is never thrown" KEY="exc.6" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="caught Exception is too generic" KEY="exc.7" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="thrown Exception is too generic" KEY="exc.8" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="thrown Exception does not preserve stacktrace of causing Exception" KEY="exc.9" PRIO="4"/>
+    <MESSAGE DISPLAYNAME="Throwable caught includes unrecoverable VM errors (java.lang.VirtualMachineError and java.lang.ThreadDeath) which should never be caught unless they are re-thrown" KEY="exc.10" PRIO="4"/>
+  </MESSAGES>
+</TEST>
+
+<TEST NAME="Switch Case Fall-Through" ACTIVE="true">
+    <MESSAGES>
+     <MESSAGE DISPLAYNAME="SwitchCaseFallThrough" KEY="194" PRIO="3" />
+    </MESSAGES>
+</TEST>
+   
+<TEST ACTIVE="true" NAME="Switch Test">
+  <INPUT_PARAMETER NAME="MAX_CASE_NUMBER" TYPE="INT">
+    <VALUE>256</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="switch statement does not have a default case" KEY="switch.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="switch case may fall through" KEY="switch.2" PRIO="1"/>
+    <MESSAGE DISPLAYNAME="default case should be the last case" KEY="switch.3" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="maximum number of cases exceeded" KEY="switch.4" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="avoid label declarations inside switch statements. Label {LABEL} defined." KEY="switch.5" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Equals/HashCode Test">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="hashCode() method returns a constant" KEY="equals.4" PRIO="1"/>
+    <MESSAGE DISPLAYNAME="method does not override public boolean equals(java.lang.Object)" KEY="equals.2" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="method has suspicious close name to hashCode()" KEY="equals.3" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="classes that override equals should also override hashCode" KEY="equals.1" PRIO="1"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Finalization Test">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="finalize() should call super.finalize()" KEY="finalize.1" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="avoid overriding finalize()" KEY="finalize.2" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="visibility of finalize() should be protected" KEY="finalize.3" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="finalize() should only be invoked by the garbage collector" KEY="finalize.4" PRIO="1"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Cloneable Test">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Declare 'clone () throws CloneNotSupportedException' for Cloneable class" KEY="clone.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="'public Object clone()' method found, but the declaring class does not implement java.lang.Cloneable" KEY="clone.2" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Wait only in synchronized loops">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="wait() invocations must be inside a synchronized block or method" KEY="sychronizedWait.1" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="wait() invocations should be inside loops" KEY="sychronizedWait.2" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="FinalBlocks">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="return should not be used inside finally blocks" KEY="finalblocks.1" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="FinallyMustCompleteNormally" KEY="184" PRIO="2"/>
+  </MESSAGES>
+</TEST>
+
+<!-- S E C U R I T Y  -->
+
+<TEST ACTIVE="true" NAME="Generic SQL Functions">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Method invocation in SQL string" KEY="security.9" PRIO="3" />
+    <MESSAGE DISPLAYNAME="Generic SQL string as parameter" KEY="security.3" PRIO="3" />
+    <MESSAGE DISPLAYNAME="Generation of generic SQL string" KEY="security.2" PRIO="3" />
+    <MESSAGE DISPLAYNAME="Unchecked generic SQL string" KEY="security.1" PRIO="3" />
+    <MESSAGE DISPLAYNAME="Status message" KEY="security.5" PRIO="4" />
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Hard Coded Security Credentials">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Hard coded password" KEY="security.7" PRIO="1" />
+    <MESSAGE DISPLAYNAME="Status message" KEY="security.5" PRIO="4" />
+    <MESSAGE DISPLAYNAME="Hard coded username" KEY="security.8" PRIO="1" />
+  </MESSAGES>
+</TEST>
+
+  <TEST ACTIVE="true" NAME="Suspicious Functions">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Suspicious function" KEY="security.4" PRIO="3" />
+    <MESSAGE DISPLAYNAME="Status message" KEY="security.5" PRIO="4" />
+  </MESSAGES>
+</TEST>
+    
+<!--  L O G G I N G  /  T R A C I N G   T E S T S   -->
+
+<TEST ACTIVE="true" NAME="Logging Severities Check">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Wrong severity for a trace message" KEY="LoggingCheck.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Log writing method called on location" KEY="LoggingCheck.3" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Trace writing method called on category" KEY="LoggingCheck.4" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Wrong severity for a log message" KEY="LoggingCheck.2" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Logging Standard Outputs">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="using standard out" KEY="sysouterr.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="using standard err" KEY="sysouterr.2" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Logs in ConsoleLog">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="using ConsoleLog" KEY="consolelog.1" PRIO="1"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Internationalization">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="String.toUpperCase() or String.toLowerCase() using default Locale" KEY="intern.1" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="char to byte or byte to char conversion using the runtime default encoding. Explicitly specify one of UTF-8, UTF-16, US-ASCII, ISO-8859-1, UTF-16BE, UTF-16LE encodings instead." KEY="intern.2" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="charset encoding used is not supported on all platforms. Use one of UTF-8, UTF-16, US-ASCII, ISO-8859-1, UTF-16BE, UTF-16LE instead." KEY="intern.3" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="char to byte or byte to char conversion uses dynamic encoding. Use hardcoded references to one of UTF-8, UTF-16, US-ASCII, ISO-8859-1, UTF-16BE, UTF-16LE instead." KEY="intern.4" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="encoding name alias used may not be supported an all platforms. Use the equivalent canonical encoding name instead." KEY="intern.5" PRIO="2"/>
+    <MESSAGE DISPLAYNAME="ResourceBundle.getBundle(String) uses the default Locale. Use ResourceBundle.getBundle versions with Locale parameter, explicitly specifying the needed Locale." KEY="intern.6" PRIO="3"/>
+    <MESSAGE KEY="intern.7" PRIO="4"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="String Pitfalls">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="Strings checked for equals with == or != instead of using equals(Object) method." KEY="string.1" PRIO="3"/>
+    <MESSAGE DISPLAYNAME="Unnecessary toString() method call from String variable/field" KEY="string.2" PRIO="4" />
+  </MESSAGES>
+</TEST>
+
+<!--  M E T R I C S  -->
+
+<TEST ACTIVE="true" NAME="Global Counters">
+  <INPUT_PARAMETER NAME="COUNT_NETTO_LOC" TYPE="BOOLEAN">
+    <VALUE>false</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="LINES OF CODE_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>1000.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="LINES OF CODE_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>5000.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="LINES OF CODE_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>10000.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Cyclomatic Complexity Metric">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="COMPLEXITY_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>60.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="COMPLEXITY_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="COMPLEXITY_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Statements per method">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="STATEMENTS_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>200.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="STATEMENTS_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="STATEMENTS_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Methods per class">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="METHODS_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>80.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="METHODS_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="METHODS_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Arguments per method">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="ARGUMENTS_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>10.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="ARGUMENTS_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="ARGUMENTS_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Max nesting level per method">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="NESTINGLEVEL_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>10.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="NESTINGLEVEL_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="NESTINGLEVEL_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="Inheritance Hierarchy Depth">
+  <INPUT_PARAMETER NAME="DISABLE_THRESHOLDS" TYPE="BOOLEAN">
+    <VALUE>true</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="HIERARCHYDEPTH_INFO_LEVEL" TYPE="FLOAT">
+    <VALUE>10.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="HIERARCHYDEPTH_WARNING_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <INPUT_PARAMETER NAME="HIERARCHYDEPTH_ERROR_LEVEL" TYPE="FLOAT">
+    <VALUE>99999.0</VALUE>
+  </INPUT_PARAMETER>
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="metric above threshold" KEY="metric.0" PRIO="DYNAMIC"/>
+  </MESSAGES>
+</TEST>
+
+<TEST ACTIVE="true" NAME="eclipse API">
+  <MESSAGES>
+    <MESSAGE DISPLAYNAME="non-API eclipse class used" KEY="eclipseapi.1" PRIO="3"/>
+  </MESSAGES>
+</TEST>
+
+</TEST_SET>
